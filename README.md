@@ -14,7 +14,7 @@ This is a guide to install macOS on my hardware
 
 ### a. Create the installer
 
-Make sure that the USB disk is formated in HFS+ (Mac OS Extended) and has GUID Partition Map scheme.
+Make sure that the USB disk is formated in HFS+J (Mac OS Extended Journaled) and has GUID Partition Map scheme.
 
 Use the 'createinstallmedia' command in Terminal.
 Follow instructions on Apple documentation about [how to create a bootable installer for macOS](https://support.apple.com/en-us/HT201372).

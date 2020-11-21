@@ -24,7 +24,7 @@
 - **Card Reader**: Realtek PCI-E Card Reader `[0x10EC:0x525A:01]` (PCI Device)
 - **Webcam**: `[0x0C45:0x670C:5626h]` (on USB 3.0 Root Hub @Port 5)
 - **USB**:
-  - USB-A Right Port (On USB 3.0 Root Hub @Port1
+  - USB-A Right Port (On USB 3.0 Root Hub @Port1)
   - USB-A Left Port (On USB 3.0 Root Hub @Port2)
   - USB-C Left Port - Intel DSL6340 (Alpine Ridge 2C 2015)
     - USB 3.1 xHCI Controller `[0x8086:0x15B5:00]`
@@ -32,3 +32,37 @@
 - **Sensor**: Dell SMI-B (ISA B2h)
 - **BIOS**: v1.12.2
 - **SMBIOS**: v2.8
+
+## Features working status (v0.1)
+
+| Feature | Status | Notes |
+| ------------- | ------------- | ------------- |
+| **Display** | ✅ Working | Display works and goes up to 1600x900@2x (2x retina). Brightness adjustment works. Intel 540 GPU Detected |
+| **Touchscreen** | ✅ Working | macOS with touchscreen, here it is 😜 |
+| **Keyboard** |  ✅ Working | PS2, `Alt` mapped as `⌘ Command`, `Windows` mapped as `⌥ Option` |
+| **Trackpad** |  ✅ Working | PS2, Full gesture support |
+| **Storage** | ✅ Working | Samsung PM951 NVMe 256Go |
+| **Speakers** | ✅ Working ||
+| **Microphone** | ✅ Working ||
+| **USB** | ✅ Working ||
+| **Apple Cloud Services** | ✅ Working ||
+| **Handoff** | 🔶 Partially working | Detects type of activity, but can't start it. Safari for example, starts but cant load url
+| **USB-C** | 🔶 Partially working | Charging and usb storage devices work, display not working. |
+| **SD Reader** | 🔶 Not tested ||
+| **WiFi 2.4 GHz** | 🔶 Partially working | 2.4 Ghz Network connexion but instable |
+| **WiFi 5 GHz** | ❌ Not working | 5Ghz Networks not visible |
+| **Bluetooth** | ❌ Not working | Hardware visible but no connexion |
+| **Headphones** | ❌ Not working | Headphones detected but no sound or crappy |
+| **Camera** | ❌ Not working | Hardware not visible | 
+
+### EFI Drivers
+Files with `efi` extension, that extends Clover features.
+Can be found in following folders:
+- /EFI/CLOVER/drivers
+- /EFI/CLOVER/drivers64
+- /EFI/CLOVER/drivers64UEFI
+
+### Kexts
+Kexts is a concatenation of `Kernel` and `Extension`, those are macOS level drivers.
+Can be found in following folders:
+- /EFI/CLOVER/kexts
