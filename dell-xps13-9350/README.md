@@ -33,7 +33,7 @@
 - **BIOS**: v1.13.0
 - **SMBIOS**: v2.8
 
-## Features working status (v0.2 - macOS 10.15.7 Catalina)
+## Features working status (v0.3 - macOS 10.15.7 Catalina)
 
 | Feature | Status | Notes |
 | ------------- | ------------- | ------------- |
@@ -43,42 +43,71 @@
 | **Trackpad** |  ✅ Working | PS2, Full gesture support |
 | **Storage** | ✅ Working | Samsung PM951 NVMe 256Go |
 | **Speakers** | ✅ Working ||
+| **Headphones** | ✅ Working ||
 | **Microphone** | ✅ Working ||
 | **USB** | ✅ Working ||
+| **SD Reader** | ✅ Working ||
 | **Bluetooth** | ✅ Working ||
 | **Handoff** | ✅ Working ||
+| **Sidecar** | ✅ Working | 🔥 Heavy power consumption |
 | **Apple Cloud Services** | ✅ Working | iMessage, Facetime, iCloud, AppStore |
 | **WiFi 2.4 GHz** | ✅ Working ||
 | **WiFi 5 GHz** | 🔶 Partially working | 5 Ghz Network connexion but sometimes drops |
 | **Camera** | 🔶 Partially working | Tested with Facetime and PhotoBooth |
 | **USB-C** | 🔶 Partially working | Charging and usb storage devices work, display not working. |
-| **Headphones** | ❌ Not working | Headphones detected but no sound or crappy |
-| **SD Reader** | ❌ Not working ||
 
 ### EFI Drivers
 Files with `efi` extension, that extends Clover features.  
 Can be found in following folder: `/EFI/CLOVER/drivers`
 
-- **NvmExpressDxe.efi**:  
-Enables support of NVM Express Devices.
-- **ApfsDriverLoader.efi**:  
+- **ApfsDriverLoader.efi** ✅:  
 Enables support of APFS file system from Container for macOS High Sierra and Later.
-- **HFSPlus.efi**:  
+- **HFSPlus.efi** ✅:  
 Enables support of HFS+ file system.  
 Required to see macOS installer on usb drives.
-- **AptioMemoryFix.efi**:  
+- **AptioMemoryFix.efi** ✅:  
 Fix certain AMI APTIO UEFI Firmware issues relevant to booting macOS.
-- **FSInject.efi**:  
+- **FSInject.efi** ✅:  
 Enables File System injection of kexts (into kernelcache).
-- **DataHubDxe.efi**:  
-Driver responsible to preload the DataHub with status information copied in from PEI HOBs.  
-Needed by some BIOSes
-- **PartitionDxe.efi**:  
-Enables support of non usual partition maps such as hybrid GPT/MBR or Apple Partition Map.  
-Required to boot recovery on OS X 10.7 through 10.9.
-- **AudioDXE.efi**:  
+- **NTFS.efi** ⌥:  
+Enables support of NTFS file system.
+- **AudioDXE.efi** ⌥:  
 HDA Driver to play start up sound at boot time.
 
 ### Kexts
 Kexts is a concatenation of `Kernel` and `Extension`, those are macOS level drivers.
 Can be found in following folder: `/EFI/CLOVER/kexts`
+
+- **Lilu.kext**:  
+Kernel extension bringing a platform for arbitrary kext, library, and program patching throughout the system for macOS.
+- **NoTouchID.kext**:  
+***Lilu plugin*** for disabling TouchID support.
+- **WhateverGreen.kext**:  
+***Lilu plugin*** providing patches to select GPUs on macOS.
+- **AirportBrcmFixup.kext**:  
+***Lilu plugin*** Enabling non-native Airport Broadcom Wi-Fi cards.
+- **BrcmBluetoothInjector.kext**:  
+A set of kernel extensions that enables Bluetooth card to work using RAMUSB.  
+Needs (`BrcmFirmwareData.kext, BrcmPatchRAM3.kext`)
+- **AppleALC.kext**:  
+Enables native macOS HD audio for not officially supported codecs without any filesystem modifications.
+- **VerbStub.kext**:  
+Hackintosh combojack support for alc256/alc255. ***Need to execute installer on post-install***
+- **UVC2FaceTimeHD.kext**:  
+Enables Facetime Camera.
+- **VirtualSMC.kext**:
+Advanced Apple SMC emulator in the kernel. Requires Lilu for full functioning.
+  - **SMCDellSensors.kext**: Enables Dell Sensors
+  - **SMCBatteryManager.kext**: Enables Battery monitoring
+- **NVMeFix.kext**:  
+Set of patches for the Apple NVMe storage driver, IONVMeFamily. Improve compatibility with non-Apple SSDs.
+- **IOElectrify.kext**:  
+Enables always-on power to Intel Thunderbolt hardware.
+- **Sinetek-rtsx.kext**:  
+Enables SD Card Reader
+- **VoodooPS2Controller.kext**:  
+Add support for PS2 Controllers such as keyboard, mouse and trackpad.
+This enables the use of any from one to four finger gestures defined by Apple.
+- **VoodooI2C.kext**:  
+Add support for I2C bus devices such as ELAN Touchscreen.  
+Needs (`VoodooI2CHID.kext`)
