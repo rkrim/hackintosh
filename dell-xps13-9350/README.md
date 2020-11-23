@@ -30,10 +30,10 @@
     - USB 3.1 xHCI Controller `[0x8086:0x15B5:00]`
     - Thunderbolt 3 Bridge `[0x8086:0x1576:00]`
 - **Sensor**: Dell SMI-B (ISA B2h)
-- **BIOS**: v1.12.2
+- **BIOS**: v1.13.0
 - **SMBIOS**: v2.8
 
-## Features working status (v0.1)
+## Features working status (v0.2 - macOS 10.15.7 Catalina)
 
 | Feature | Status | Notes |
 | ------------- | ------------- | ------------- |
@@ -45,24 +45,40 @@
 | **Speakers** | ✅ Working ||
 | **Microphone** | ✅ Working ||
 | **USB** | ✅ Working ||
-| **Apple Cloud Services** | ✅ Working ||
-| **Handoff** | 🔶 Partially working | Detects type of activity, but can't start it. Safari for example, starts but cant load url
+| **Bluetooth** | ✅ Working ||
+| **Handoff** | ✅ Working ||
+| **Apple Cloud Services** | ✅ Working | iMessage, Facetime, iCloud, AppStore |
+| **WiFi 2.4 GHz** | ✅ Working ||
+| **WiFi 5 GHz** | 🔶 Partially working | 5 Ghz Network connexion but sometimes drops |
+| **Camera** | 🔶 Partially working | Tested with Facetime and PhotoBooth |
 | **USB-C** | 🔶 Partially working | Charging and usb storage devices work, display not working. |
-| **SD Reader** | 🔶 Not tested ||
-| **WiFi 2.4 GHz** | 🔶 Partially working | 2.4 Ghz Network connexion but instable |
-| **WiFi 5 GHz** | ❌ Not working | 5Ghz Networks not visible |
-| **Bluetooth** | ❌ Not working | Hardware visible but no connexion |
 | **Headphones** | ❌ Not working | Headphones detected but no sound or crappy |
-| **Camera** | ❌ Not working | Hardware not visible | 
+| **SD Reader** | ❌ Not working ||
 
 ### EFI Drivers
-Files with `efi` extension, that extends Clover features.
-Can be found in following folders:
-- /EFI/CLOVER/drivers
-- /EFI/CLOVER/drivers64
-- /EFI/CLOVER/drivers64UEFI
+Files with `efi` extension, that extends Clover features.  
+Can be found in following folder: `/EFI/CLOVER/drivers`
+
+- **NvmExpressDxe.efi**:  
+Enables support of NVM Express Devices.
+- **ApfsDriverLoader.efi**:  
+Enables support of APFS file system from Container for macOS High Sierra and Later.
+- **HFSPlus.efi**:  
+Enables support of HFS+ file system.  
+Required to see macOS installer on usb drives.
+- **AptioMemoryFix.efi**:  
+Fix certain AMI APTIO UEFI Firmware issues relevant to booting macOS.
+- **FSInject.efi**:  
+Enables File System injection of kexts (into kernelcache).
+- **DataHubDxe.efi**:  
+Driver responsible to preload the DataHub with status information copied in from PEI HOBs.  
+Needed by some BIOSes
+- **PartitionDxe.efi**:  
+Enables support of non usual partition maps such as hybrid GPT/MBR or Apple Partition Map.  
+Required to boot recovery on OS X 10.7 through 10.9.
+- **AudioDXE.efi**:  
+HDA Driver to play start up sound at boot time.
 
 ### Kexts
 Kexts is a concatenation of `Kernel` and `Extension`, those are macOS level drivers.
-Can be found in following folders:
-- /EFI/CLOVER/kexts
+Can be found in following folder: `/EFI/CLOVER/kexts`
