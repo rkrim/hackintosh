@@ -44,9 +44,39 @@ This step is computer specific, so go to the right section on the right hardware
 
 ## Modify BIOS/UEFI Settings
 
-Depending on computers, some components and/or settings can prevent macOS from booting.
+Depending on computers, some components and/or settings can prevent macOS from booting or installing correctly.
 
-Those components needs to be turned off and settings needs to be changed at least until the install successfully finishes.
+Those components needs to be turned off and settings needs to be changed to let macOS works correctly.
+
+- **Compatibility Support Module / CSM**:
+The Compatibility Support Module is a UEFI component that emulates legacy BIOS to provide compatibility to legacy operating systems that don't recognize UEFI systems.
+Both Clover and OpenCore bootloaders supports UEFI Booting.  
+**Disable CSM**
+
+- **Secure Boot**:
+Secure Boot prevents booting an unsigned Bootloader. It is not supported by Clover or OpenCore.  
+**Disable Secure Boot**
+
+- **OS Type**:
+This generally goes with `Secure boot` and optimizes some functions depending on the OS.  
+**OS Type: Other OS**
+
+- **SATA controller mode**:
+Advanced Host Controller Interface (AHCI) mode enables the use of advanced features on SATA drives, like Native Command Queuing (NCQ) and also makes them operate at higher speeds than in legacy IDE mode.  
+**SATA mode: AHCI**
+
+- **CFG Lock**:
+CFG Lock prevents writing to certain region in the BIOS. If macOS can’t access those regions, it won't boot.
+This option is sometimes enabled and hidden from user.  
+**Disable CFG Lock**
+
+- **Intel Virtualization Technology / VT or VT-x**:
+Found on Intel CPU, this enhances virtualization softwares. It sometimes prevents macOS from installing correctly.  
+**Disable Intel VT-x until install finishes**
+
+- **Intel Virtualization Technology for Directed IO / VT-d / IOMMU**:
+An extension that allows physical hardware access under a virtual-machine. It sometimes prevents macOS from installing correctly.  
+**Disable VT-d until install finishes**
 
 ## Install macOS
 
