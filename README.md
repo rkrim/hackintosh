@@ -31,13 +31,26 @@ sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstall
 sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
 ```
 
-### b. Bootloader
-
+### b. EFI Partition
 At this step, we have a bootable macOS USB Installer that can be used to install macOS on Apple Computers.
 
-To make it bootable on other computers, we need to mount the EFI partition of the USB disk and add a bootloader and by the way, also add required firmware drivers, kexts, patches and other needed stuff.
+To make it bootable on other computers, we need to mount the EFI partition of the USB disk and add a bootloader and by the way, add required firmware drivers, kexts, patches and other needed stuff.
 
-There is a lot of bootloader projects out there, the most popular one are Clover and OpenCore.
+To mount the EFI partition, open terminal and type the following:  
+- List all disks and partitions  
+`sudo diskutil list`  
+```
+/dev/disk2 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *7.9 GB     disk2
+   1:                        EFI EFI                     209.7 MB   disk2s1
+   2:                  Apple_HFS Untitled                7.5 GB     disk2s2
+```
+- Find and mount the EFI partition, in the example, it's `disk 2` and `partition 1`.  
+`sudo diskutil mount disk2s1`
+
+### c. Bootloader
+There is a lot of bootloader projects out there, the most popular ones are Clover and OpenCore.
 When you can, always choose OpenCore as it has a better and more secure approach ([Why OpenCore](https://dortania.github.io/OpenCore-Install-Guide/why-oc.html)).
 
 This step is computer specific, so go to the right section on the right hardware directry.
