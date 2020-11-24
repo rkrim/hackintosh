@@ -107,6 +107,7 @@ Install macOS like on a regular Apple computer.
 - [Clover](https://github.com/CloverHackyColor/CloverBootloader/releases)
 - [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases)
 - [MountEFI](https://github.com/corpnewt/MountEFI)
+- [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 - [Clover Configurator](https://mackie100projects.altervista.org/download-clover-configurator/)
 - [OpenCore Configurator](https://mackie100projects.altervista.org/download-opencore-configurator/)
 - [ProperTree](https://github.com/corpnewt/ProperTree)

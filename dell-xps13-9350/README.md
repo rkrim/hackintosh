@@ -16,7 +16,7 @@
   - **_Monitor ID_**: SHP144A
   - **_Touch Layer_**: ELAN `[0x04F3:0x20D0:1112h]` (on USB 3.0 Root Hub @Port4)
 - **Wireless Card**: Dell Wireless 1820A (DW1820A) - `Hardware Rev. CN-0VW3T3`
-  - **_Wi-Fi_**: Broadcom Inc. BCM4350 802.11ac Wireless Network Adapter `[0x14E4:0x43A3:08]` (PCI Device)
+  - **_Wi-Fi_**: Broadcom Inc. BCM4350 802.11ac Wireless Network Adapter `[0x14E4:0x43A3:08]` (on `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)`)
   - **_Bluetooth_**: Broadcom Crop. Dell Wireless 1820A Bluetooth 4.1 LE `[0x0A5C:0x6412:0112h]` (on USB 3.0 Root Hub @Port3)
 - **Sound**: Intel Sunrise Point-LP PCH `[0x8086:0x9D70:21]` (PCI Device)
   - Realtek ALC256 (ALC3246) `[0x10EC:0x0256:1000]`
@@ -111,3 +111,21 @@ This enables the use of any from one to four finger gestures defined by Apple.
 - **VoodooI2C.kext**:  
 Add support for I2C bus devices such as ELAN Touchscreen.  
 Needs (`VoodooI2CHID.kext`)
+
+## Post Install and important notes
+- Apple logo on boot instead of logs:  
+Remove `-v` and `debug=0x10` from NVRAM arguments
+- Apple Service:  
+To enable Apple services like iMesage, generate ***SMBIOS Info*** with tools like [`Clover Configurator`](https://mackie100projects.altervista.org/download-clover-configurator/) or [`GenSMBIOS`](https://github.com/corpnewt/GenSMBIOS).  
+Most important infos are **`Type, Serial, Board Serial, SmUUID`**.
+- Headphones:  
+Headphones are supported with [ComboJack](https://github.com/hackintosh-stuff/ComboJack), to enable full support run `ComboJack_Installer/install.sh` in terminal and reboot.
+- Updating `VoodooI2C` requires disabling the embedded `VoodooInput.kext` plugin to avoid collision with `VoodooPS2Controller`'s own plugins.
+
+## Similar Projects & Community
+- [Github: syscl - XPS9350-macOS](https://github.com/syscl/XPS9350-macOS)
+- [Github: hackintosh-stuff - XPS9350-macOS](https://github.com/hackintosh-stuff/XPS9350-macOS)
+- [Github: the-darkvoid - XPS9360-macOS](https://github.com/the-darkvoid/XPS9360-macOS)
+- [Github: jsassu20 - macOS Full Support of Dell DW1820a Broadcom BCM94350Zae](https://github.com/jsassu20/Dell-DW1820a-Broadcom-BCM94350Zae-macOS-Full-Support)
+- [tonymacx86: Guide - Dell xps 13 9350 - Catalina](https://www.tonymacx86.com/threads/guide-dell-xps-13-9350-catalina.296796/)
+- [tonymacx86: Guide - Dell xps 13 9350 - Catalina 10.15.5 - Clover](https://www.tonymacx86.com/threads/guide-xps-13-9350-catalina-10-15-5-clover-hotpatch-simple-clean-ish.299997/)
