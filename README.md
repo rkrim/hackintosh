@@ -3,6 +3,7 @@ This is a guide to install macOS on my hardware
 ## 1. Know the hardware
 
 - Dell XPS 13 9350 - [Specifications](https://github.com/rkrim/hackintosh/tree/master/dell-xps13-9350)
+- Intel NUC8i5BEK - [Specifications](https://github.com/rkrim/hackintosh/tree/master/intel-nuc8-i5bek)
 
 ## 2. Download macOS Installer
 
