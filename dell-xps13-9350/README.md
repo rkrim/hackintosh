@@ -120,6 +120,8 @@ To enable Apple services like iMesage, generate ***SMBIOS Info*** with tools lik
 Most important infos are **`Type, Serial, Board Serial, SmUUID`**.
 - Headphones:  
 Headphones are supported with [ComboJack](https://github.com/hackintosh-stuff/ComboJack), to enable full support run `ComboJack_Installer/install.sh` in terminal and reboot.
+- Trackpad:  
+This is not a "`Force Touch trackpad`". So, to avoid any misclick, disable "Force click and haptic feedback" in System Preferences > Trackpad > Point & Click.
 - Updating `VoodooI2C` requires disabling the embedded `VoodooInput.kext` plugin to avoid collision with `VoodooPS2Controller`'s own plugins.
 
 ## Similar Projects & Community
