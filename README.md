@@ -103,6 +103,19 @@ Install macOS like on a regular Apple computer.
 - When possible, undo changes made in BIOS and/or UEFI
 - Reboot.
 
+## Useful commands
+
+### Recovery mode
+  - To boot in recovery mode from macOS, open Terminal and type:
+    ```
+    sudo nvram "recovery-boot-mode=unused"
+    sudo reboot
+    ```
+  - To get back to regular boot, from macOS Recovery mode, open Terminal and type:
+    ```
+    nvram -d recovery-boot-mode
+    ```
+
 ## Tools
 
 - [Clover](https://github.com/CloverHackyColor/CloverBootloader/releases)
