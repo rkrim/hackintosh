@@ -92,6 +92,26 @@ Found on Intel CPU, this enhances virtualization softwares. It sometimes prevent
 An extension that allows physical hardware access under a virtual-machine. It sometimes prevents macOS from installing correctly.  
 **Disable VT-d until install finishes**
 
+## Kernel Extensions
+### USB Port mapping
+A USB controller is generally able to handle more ports than physically available.  
+Drivers rely on ACPI to get information on which port is enabled or disabled but this information is sometimes wrong or badly interpreted. So we can end up with some or all physical ports disabled.  
+To enable the right ports we first need to identify them, but they can't be tested if they are disabled in ACPI. So we use an injector to enable all ports so we can easily identify them.  
+[Why should you USB map](https://dortania.github.io/OpenCore-Post-Install/usb/)
+
+For this, we need:
+- [USBInjectAll.kext](https://github.com/Sniki/OS-X-USB-Inject-All/releases) will inject all ports to make them visible and testable.  
+- [XHCI-unsupported.kext](https://github.com/RehabMan/OS-X-USB-Inject-All/tree/master/XHCI-unsupported.kext) If the controller is not natively recognized by macOS.  
+**Note**: This kext can be used even if the controller is recognbized.
+- If the controller has more than 15 ports which is macOS limit:  
+On OpenCore: `Kernel > Quirks > XhcpiPortLimit > True`
+- [Hackintool](https://github.com/headkaze/Hackintool/releases): The Swiss army knife of vanilla Hackintoshing.
+- One of each USB2 and USB3 devices for USB-A and USB-C type (like a storage usb stick).
+
+Open Hackintool and Go to USB tab. Now plug all usb devices on all ports one by one.  
+Once all port become highlited in green, click on export to generate files.
+
+
 ## Install macOS
 
 Install macOS like on a regular Apple computer.
