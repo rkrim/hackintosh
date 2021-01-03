@@ -59,9 +59,18 @@
     - **_DevicePath_**: `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/Pci(0x0,0x0)`
     - **_DevicePath_**: `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/Pci(0x1,0x0)`
     - **_DevicePath_**: `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/Pci(0x2,0x0)`
-
   - JHL6340 Thunderbolt 3 USB 3.1 Controller (C step) [Alpine Ridge 2C 2016]
     - **_HardwareId_**: `[0x8086:0x9DED]`
     - **_DevicePath_**: `PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/Pci(0x2,0x0)/Pci(0x0,0x0)`
+- **USB Hardware mapping**:
+  - Internal:
+    - Name: `HS10`, Port: `0x0A`
+  - Front:
+    - Right USB-A (Yellow): Name: `HS01`, Port: `0x01` | Name: `SS01`, Port: `0x0D`
+    - Left USB-A (Blue): Name: `HS02`, Port: `0x02` | Name: `SS02`, Port: `0x0E`
+  - Rear:
+    - Bottom USB-A (Blue): Name: `HS03`, Port: `0x03` | Name: `SS03`, Port: `0x0F`
+    - Top USB-A (Blue): Name: `HS04`, Port: `0x04` | Name: `SS04`, Port: `0x10`
+    - Right USB-C (Thunbderbolt): Name: `UB21`, Port: `0x01` | Name: `UB31`, Port: `0x03`
 - **BIOS**: BECFL357.86A.0085.2020.1007.1917
 - **SMBIOS**: v3.2
