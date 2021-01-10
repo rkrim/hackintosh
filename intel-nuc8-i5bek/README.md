@@ -1,17 +1,17 @@
 # macOS on Intel NUC8i5BEK Bean Canyon
 
 ## Hardware Specifications
-
+[Intel NUC Kit NUC8i5BEK](https://ark.intel.com/content/www/us/en/ark/products/126147/intel-nuc-kit-nuc8i5bek.html)
   ```
   HardwareId: [VendorId:DeviceId:Revision]
   DevicePath: PciRoot(Bus)/Pci(Device, Function)
   ```
-
 - **North Bridge**: Intel Coffee Lake-U IMC
 - **South Bridge**: Intel Cannon Point-LP
-- **CPU**: Intel Coffee Lake Core i5-8259U @ [2.3GHz, 3.7GHz] (QuadCore)  
+- **CPU**: Intel Coffee Lake Core i5-8259U @ [2.3GHz, 3.8GHz] (QuadCore)  
   [Intel Product Specifications](https://ark.intel.com/content/www/us/en/ark/products/135935/intel-core-i5-8259u-processor-6m-cache-up-to-3-80-ghz.html)
-  - **_Clock_**: 23x100MHz, **_voltage_**: 0.8v
+  - **_Cores_**: 4, **_threads_**: 8, **_clock_**: 23x100MHz, **_voltage_**: 0.8v
+  - **_TDP_**: 28W, **_TDP-down_**: 20W, **_TDP-down Frequency_**: 1.10 GHz
 - **Memory**: 32Go, 2x Crucial 16Go DDR4-2666 SODIMM (CT16G4SFRA266)
   - **_Timings_**: 19-19-19-43 (CL-RCD-RP-RAS), **_voltage_**: 1.2v
 - **Storage**: Crucial P2 M.2 2280 SSD CT1000P2SSD8 1To
